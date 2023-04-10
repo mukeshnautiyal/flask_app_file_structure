@@ -1,8 +1,10 @@
 import os
+from dotenv import load_dotenv
 
-#basedir = os.path.abspath(os.path.dirname(__file__))
+# Load .env file in the app
+load_dotenv()
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = "mysql://root:@localhost/sqlalchemy_database"
+    SQLALCHEMY_DATABASE_URI = "mysql://"+os.environ.get('DBUSER')+":"+os.environ.get('DBPASSWORD')+"@localhost/"+os.environ.get('DBNAME')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
