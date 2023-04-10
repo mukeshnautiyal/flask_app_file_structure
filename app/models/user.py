@@ -1,4 +1,7 @@
 from app.extensions import db
+from sqlalchemy import Date,Column
+from app.utils.common import today
+
 
  
 
@@ -13,6 +16,9 @@ class User(db.Model):
     password = db.Column(db.String(200), unique=True, nullable=False)
     age = db.Column(db.Integer)
     bio = db.Column(db.Text)
+    created_on = Column(Date, default=today, nullable=False)
+    updated_on = Column(Date, nullable=True)
     
     def __repr__(self):
         return f'<Student {self.firstname}>'
+        
